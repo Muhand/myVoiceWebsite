@@ -21,32 +21,32 @@ This is the website for the app myVoice
 
 # <a name="GettingStarted"></a>Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-## <a name="Prerequisites"></a>Prerequisites
-1. <a href="https://www.vagrantup.com/">adsfadsfadsf</a>Vagrant 
-2. <a href="https://www.virtualbox.org/wiki/Downloads"></a>VirtualBox
-3. <a href="https://git-scm.com/downloads"></a>Gitbash
-4. <a href="https://www.sublimetext.com/"></a>Sublime (or any other text editor)
 
-```
-Give examples
-```
+## <a name="Prerequisites"></a>Prerequisites
+1. <a href="https://www.vagrantup.com/">Vagrant</a> 
+2. <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>
+3. <a href="https://git-scm.com/downloads">Gitbash</a>
+4. <a href="https://www.sublimetext.com/">Sublime</a> (or any other text editor)
+
 
 ## <a name="Installing"></a>Installing
 A step by step series of steps that will have you install the appropriate enviornment.
+
+After installing Gitbash, Virtualbox and Vagrant from the [Prerequisites](#Prerequisites) sections, follow this guide.
 
 1. Open Git Bash and navigate to a place where you want to clone this project
   1. Make folder for The Project
   2. Clone the project
     ```
-    git clone https://github.com/Muhand/PeerTutor.git
+    git clone https://github.com/Muhand/myVoiceWebsite.git
     ```
-  3. Change directory into the PeerTutor
+  3. Change directory into the myVoiceWebsite
     ```
-    cd PeerTutor
+    cd myVoiceWebsite
     ```
 2. Now we need to setup our vagrant machine
     ```
-    cd www.peertutor.com
+    cd www.myvoice.com
     ```
 
 3. Run the vagrant machine and ssh into it
