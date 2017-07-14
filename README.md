@@ -5,6 +5,8 @@
 + [Getting Started](#GettingStarted)
   * [Prerequisites](#Prerequisites)
   * [Installing](#Installing)
++ [Optional](#Optional)
+  * [New Vagrant](#Newvagrant)
 + [Running the tests](#RunningTheTests)
   * [Break down into end to end tests](#BreakDown)
   * [And coding style tests](#CodeStyle)
