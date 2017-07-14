@@ -218,7 +218,10 @@ This section assumes you have already went over the [Prerequisites](#Prerequisit
 	```
 	config.vm.network "forwarded_port", guest: 80, host: 8080, mysql:3306
 	```
-7. Now we need to uncomment line 35 by removeing the '#' symbol from the beginning of the line
+7. Now we need to uncomment line 35 by removeing the '#' symbol from the beginning of the line. It should look like this
+    ```
+    config.vm.network "private_network", ip: "192.168.33.10"
+    ```
 8. (Optional) you can edit the IP address in line 35, this is the IP you will use to connect to the machine
 
 # <a name="RunningTheTests"></a>Running the tests
