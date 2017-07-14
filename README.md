@@ -320,8 +320,8 @@ This section assumes you have already installed a clean version of vagrant by fo
     ```
     npm install --save nodemon --no-bin-links
     ```
-    
-    2.Now we need to update our package.json so it reflects our changes
+
+    2. Now we need to update our package.json so it reflects our changes
     go to the "start" script and change it to
     ```
     "start": "node_modules/nodemon/bin/nodemon.js -L app.js",
