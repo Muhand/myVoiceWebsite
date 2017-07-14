@@ -373,7 +373,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 # <a name="Authors"></a>Authors
 
-* **Muhand Jumah** - *Initial work* - [Github](https://github.com/PurpleBooth) [Personal Website](https://www.muhandjumah.com/)
+* **Muhand Jumah** - *Initial work* - [Github](https://github.com/PurpleBooth) [Personal Website](http://www.muhandjumah.com/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
