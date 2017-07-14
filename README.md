@@ -32,7 +32,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## <a name="Installing"></a>Installing
 A step by step series of steps that will have you install the appropriate enviornment.
 
-After installing Gitbash, Virtualbox and Vagrant from the [Prerequisites](#Prerequisites) sections, follow this guide.
+After installing Gitbash, Virtualbox and Vagrant from the [Prerequisites](#Prerequisites) section, follow this guide.
 
 1. Open Git Bash and navigate to a place where you want to clone this project
   1. Make folder for The Project
@@ -53,6 +53,8 @@ After installing Gitbash, Virtualbox and Vagrant from the [Prerequisites](#Prere
     ```
     Vagrant up && vagrant ssh
     ```
+
+    Optional: If you want to create your own vagrant machine from scratch please follow [New Vagrant Machine from Scratch](#Newvagrant) in the [Optional](#Optional)section.
 
 4. Update the machine
     ```
@@ -193,6 +195,29 @@ Then look for 'bind-address' and add '#' before it, now few lines before this lo
 ---
 End with an example of getting some data out of the system or using it for a little demo
 
+# <a name="Optional"></a>Optional
+The sub-sections in this section are all optional.
+
+## <a name="Newvagrant"></a>New Vagrant Machine from Scratch
+This section assumes you have already went over the [Prerequisites](#Prerequisites) section.
+
+1. Run Gitbash
+2. Navigate to the folder where you want to create the vagrant machine
+3. Run the following command
+	```
+	vagrant init ubuntu/trusty64
+	```
+4. Now we need to edit the Vagrantfile by openning it in a text editor, I recommend using Sublime
+5. Uncomment line 26, so it's like this
+	```
+	config.vm.network "forwarded_port", guest: 80, host: 8080
+	```
+6. Now add mysql support by editing line 26, to be like this
+	```
+	config.vm.network "forwarded_port", guest: 80, host: 8080, mysql:3306
+	```
+7. Now we need to uncomment line 35 by removeing the '#' symbol from the beginning of the line
+8. (Optional) you can edit the IP address in line 35, this is the IP you will use to connect to the machine
 
 # <a name="RunningTheTests"></a>Running the tests
 
