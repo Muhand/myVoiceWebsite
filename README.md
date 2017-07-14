@@ -7,6 +7,7 @@
   * [Installing](#Installing)
 + [Optional](#Optional)
   * [New Vagrant](#Newvagrant)
+  * [Starting a new project from scratch](#Newproject)
 + [Running the tests](#RunningTheTests)
   * [Break down into end to end tests](#BreakDown)
   * [And coding style tests](#CodeStyle)
@@ -29,7 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
 2. <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>
 3. <a href="https://git-scm.com/downloads">Gitbash</a>
 4. <a href="https://www.sublimetext.com/">Sublime</a> (or any other text editor)
-
+5. <a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a> (or any other mySql tool)
 
 ## <a name="Installing"></a>Installing
 A step by step series of steps that will have you install the appropriate enviornment.
@@ -90,22 +91,22 @@ Then look for 'bind-address' and add '#' before it, now few lines before this lo
         ```
         mysql -u root -p
         ```
-    2. Type the root password
-    3. Now create a user so our app use it, I will call it 'pt_dev' you can call it anything you want but then you will have to change it in the config.json file as well, I will give it '123456' as a password, again if you change it then you must change config.json.
+    2. Type the root password (We already set it to '123456')
+    3. Now create a user so our app use it, I will call it 'mv_dev' you can call it anything you want but then you will have to change it in the config.json file as well, I will give it '123456' as a password, again if you change it then you must change config.json.
         ```
-        CREATE USER 'pt_dev'@'localhost' IDENTIFIED BY '123456';
+        CREATE USER 'mv_dev'@'localhost' IDENTIFIED BY '123456';
         ```
     4. We need to give it all of the privileges
         ```
-        GRANT ALL PRIVILEGES ON *.* TO 'pt_dev'@'localhost' WITH GRANT OPTION;
+        GRANT ALL PRIVILEGES ON *.* TO 'mv_dev'@'localhost' WITH GRANT OPTION;
         ```
     5. Now we need to create this user to be accessable also from other hosts and not only localhost so we will repeat the above steps and just change 'localhost' to a wildcard '%'
         ```
-        CREATE USER 'pt_dev'@'%' IDENTIFIED BY '123456';
+        CREATE USER 'mv_dev'@'%' IDENTIFIED BY '123456';
         ```
     6. We need to give it all of the privileges
         ```
-        GRANT ALL PRIVILEGES ON *.* TO 'pt_dev'@'%' WITH GRANT OPTION;
+        GRANT ALL PRIVILEGES ON *.* TO 'mv_dev'@'%' WITH GRANT OPTION;
         ```
     7. Now we need to flush the privileges then simply just exit
         ```
@@ -123,7 +124,7 @@ Then look for 'bind-address' and add '#' before it, now few lines before this lo
     2. Add a connection name, anything you want.
     3. For hostname put '192.168.33.10' (without quotes) or if you have changed it in Vagrantfile then match it.
     4. Port leave it as is 3306
-    5. For username put 'pt_dev' (without quotes) or any username you specified in config.json.
+    5. For username put 'mv_dev' (without quotes) or any username you specified in config.json.
     6. Click on 'Store in Vault ...' for password and enter '123456' (without quotes) or any password you specified in config.json.
     7. Press on 'Test Connection', if everything went okay then you should see this
     ![Alt text](https://s11.postimg.org/fbwwqcg5v/mysql_3.png "Successful Connection")
@@ -131,8 +132,9 @@ Then look for 'bind-address' and add '#' before it, now few lines before this lo
     ![Alt text](https://s15.postimg.org/worzq9avv/mysql_4.png "New Server Added")
     9. Since we are working with the database then mind as well just add the appropriate database, to do that press on the 'Create a new schema in the connected server' button from the toolbar (THIS HAS TO BE DONE AFTER YOU HAVE CONNECTED TO THE ADDED SERVER)
     ![Alt text](https://s16.postimg.org/8qid9l451/mysql_5.png "Add new database")
-    10. Enter a schema name and let it be 'pt_development' without quotes then press 'Apply' and finally press 'Finish'
+    10. Enter a schema name and let it be 'mv_development' without quotes then press 'Apply' and finally press 'Finish'
     11. Now close out MySQL workbench and we are done with setting up our database server and schema.
+
 10. Now back to vagrant we need to install Node.js to do this head to our vagrant/project folder
     ```
     cd /vagrant/project
@@ -223,6 +225,112 @@ This section assumes you have already went over the [Prerequisites](#Prerequisit
     config.vm.network "private_network", ip: "192.168.33.10"
     ```
 8. (Optional) you can edit the IP address in line 35, this is the IP you will use to connect to the machine
+
+## <a name="Newproject"></a>Starting a new project from scratch
+This section assumes you have already installed a clean version of vagrant by following the [New Vagrant Machine from Scratch](#Newvagrant) section.
+
+1. Now you need to follow [Installing](#Installing) section starting at step 6 (If you didn't start your machine yet) or 7 (if you have already started the machine and SSHed into it) up to step 9 (Finish step 9 and come back here)
+
+2. Now we need to create our source folder (The folder where we will write our code), the nice thing about vagrant is that it can share files between it's machine and your host machine (your main machine); However everything that is shared is stored in /vagrant directory in the root. To navigate to it:
+    ```
+    cd /vagrant
+    ```
+3. After navigating to it, we need to create a project file by following this command
+    ```
+    mkdir src
+    ```
+4. Change 'src' to anything you want, now navigate to this project directory by typing
+    ```
+    cd src
+    ```
+5. Now we ned to install our Node.JS, to do this follow step 11 in [Installing](#Installing) setcion
+    1. I installed nvm 6.5.0; This is the most stable at this time, but evenutally there will be more stable versions, you can checkout all versions by typing
+    ```
+    nvm ls-remote
+    ```
+    2. The install the one you want, if you have more than 1 Node.JS versions installed then you can switch between them by typing
+    ```
+    nvm use x.x.x
+    ```
+    let x.x.x be your version number.
+
+6. Test node works by typing
+    ```
+    node
+    ```
+7. Finally now we can create our new web app by following this command
+    ```
+    npm init
+    ```
+    This command will create a ```package.json``` to mana our project dependencies and scripts.
+    You will notice that terminal will prompt you with configurations for your package.json file, just follow the prompts, the first prompt asks about the APP name, then version (Hit enter to keep it at default), then description, then the entry point, for this I like to name it ```app.js``` and now just follow the prompts (you can edit this at any time.
+8. Now we need to create our start script, so the server knows how to start.
+    1. To do this go back to your host machine and open the project folder with Sublime or any other project managment tool
+    2. open package.json to edit
+        Go to ```"scripts": {``` line and below it add
+        ```
+        "start": "node app.js",
+        ```
+        Save it and go back to your Gitbash
+        This is the script that will handle our server
+9. Now we need to install EXPRESS, to do this type the following command
+    ```
+    npm install --save express
+    ```
+    This command installs express to my node_modules directory and the --save option adds it to my package.json file as a dependency of my application.
+
+    NOTE: if you are running windows that might give you some errors because there is a bug with symlinks so you might want to run the following command. As of 7/13/2017 this bug still exists
+    ```
+    npm install --save express --no-bin-links
+    ```
+10. Now we are ready to create our app, go back to Sublime and createa  new file in the root directory and call it "app.js" This is going to be the main file that will handle all of the routing in our app
+    After creating the file, add the following code
+    ```
+    const express = require('express');     //Import our express framework
+    const app = express();                  //Initialize it
+
+    //Simple get function, it will return 'Hello world' to the webpage
+    app.get('/', function(req, res){
+        res.send('hello world');
+    });
+
+    //This is the port the app will work on, this must match what we have in Vagrant file
+    app.listen(8000);
+
+    ```
+    Save everything
+
+11. Now back to gitbash and run our server by typing
+    ```
+    npm start
+    ```
+12. Now the final step is to go to a webbrowser and navigate to 192.168.33.10:8000 (Make sure the ip and port matches what you have in the vagrant file)
+    
+13. Congratulations you have just created your first simple app
+
+14. Optional but highly recommended
+    Now if you go back to your app.js and make any changes they wont take effect immeditly, in order to see the changes you would have to go back to gitbash and press ```CTRL+C``` to terminate and then ```npm start``` to start the server again, this can be really annoying if the project gets larger; to solve this issue we will install nodemon
+
+    1. To install nodemon type the following
+    ```
+    npm install --save nodemon
+    ```
+    Again if you face an error then type
+
+    ```
+    npm install --save nodemon --no-bin-links
+    ```
+    2.Now we need to update our package.json so it reflects our changes
+    go to the "start" script and change it to
+    ```
+    "start": "node_modules/nodemon/bin/nodemon.js -L app.js",
+    ```
+
+    3. Finally start your server by typing
+    ```
+    npm start
+    ```
+    Now go to a web browser and type 192.168.33.10:8000 and you should be prompted with "hello world" now go back to your app.js and change the message to anything you want and go back to the web browser and refresh the page and you will see it taking effect immeditly.
 
 # <a name="RunningTheTests"></a>Running the tests
 
