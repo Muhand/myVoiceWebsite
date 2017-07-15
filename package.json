@@ -1,0 +1,28 @@
+{
+  "name": "myvoice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node_modules/nodemon/bin/nodemon.js -L app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhand/myVoiceWebsite.git"
+  },
+  "author": "Muhand Jumah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhand/myVoiceWebsite/issues"
+  },
+  "homepage": "https://github.com/muhand/myVoiceWebsite#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "express": "^4.15.3",
+    "generator-meanjs": "^0.1.12",
+    "grunt-cli": "^1.2.0",
+    "mongodb": "^2.2.30",
+    "nodemon": "^1.11.0"
+  }
+}

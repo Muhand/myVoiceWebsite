@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "mv_dev",
+    "password": "123456",
+    "database": "mv_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "mv_test",
+    "password": "123456",
+    "database": "mv_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "mv_prod",
+    "password": "1234567",
+    "database": "mv_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

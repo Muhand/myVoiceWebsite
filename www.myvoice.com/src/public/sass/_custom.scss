@@ -1,0 +1,173 @@
+// .navbar{
+//   margin-bottom: 0;
+//   a{
+//     color: set-text-color($main-color) !important;
+//   }
+//
+//   .fa{
+//     font-size: 18px;
+//   }
+// }
+//
+// .showcase{
+//   background: url(../imgs/showcase.jpg) no-repeat 0 -50px;
+//   height: 600px;
+//   padding: 30px 0;
+//
+//   h1{
+//     font-size: 60px;
+//   }
+//
+//   .container{
+//     margin-top: 50px;
+//     background: #fff;
+//     opacity: 0.8;
+//     padding: 20px 30px 30px 30px;
+//   }
+// }
+//
+// .section-a{
+//   padding: 30px 0;
+//   text-align: center;
+//   background-color: $main-color;
+//
+//   color: set-text-color($main-color) !important;
+//
+//   .fa{
+//     font-size: $icon-size;
+//   }
+// }
+//
+// .section-b{
+//   background: #e6ebf1;
+//   padding: 30px 0;
+//
+//   img{
+//     width: 100%;
+//   }
+// }
+//
+// .section-c{
+//   padding: 60px 0;
+//   text-align: center;
+//   background-color: $main-color;
+//   color:set-text-color($main-color);
+//
+//   .btn-primary{
+//     background: darken($main-color, 10%);
+//   }
+// }
+//
+// footer{
+//   padding: 30px 0;
+//   background: darken($main-color, 10%);
+//   color: set-text-color($main-color);
+// }
+// body{
+//   background-color: $main-color;
+//   // position: relative;
+//   display: flex;
+//  justify-content: center;
+//  align-items: center;
+//
+// }
+// .parent{
+//
+// }
+// .section-a{
+//   // text-align: center;
+//   color: set-text-color($main-color);
+//   background-color: green;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//
+//   .container{
+//     background-color: pink;
+//
+//     // position: relative;
+//     .row{
+//
+//       .form{
+//         text-align: center;
+//         background-color: blue;
+//
+//       }
+//     }
+//   }
+// }
+html, body{
+  height: 100%;
+  color: set-text-color($main-color);
+  background-color: $main-color;
+  font-family: $main-family;
+}
+.navbar{
+  height: 95px;
+  border: none;
+}
+.section-a{
+  background-color: transparent;
+  height: inherit;
+  overflow: auto;
+
+  .container{
+    display: table;
+    height: 100%;
+    .row{
+      display: table-cell;
+      vertical-align: middle;
+      .form{
+        // background-color: blue;
+        // text-align: center;
+
+        h1{
+          font-weight:bolder;
+        }
+
+        .buttons{
+          margin-top:70px;
+          .signupBtn{
+            background-color: white;
+            color: $main-color;
+            font-weight: bold;
+            border: none;
+          }
+          .signupBtn:hover{
+            background-color: darken(white, 10%);
+          }
+          .loginBtn{
+            background-color: transparent;
+            color: white;
+            font-weight: bold;
+            border: none;
+          }
+          .loginBtn:hover{
+            background-color: darken($main-color, 10%);
+          }
+
+          .registerInput{
+            background-color: transparent;
+            // border: ;
+            border-color: #000;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-radius: 0px;
+            box-shadow: none;
+            padding: 0px;
+            color: white;
+          }
+          .registerInput::placeholder{
+            color: white;
+            font-style: italic;
+            opacity: 0.6;
+          }
+
+        }
+
+      }
+    }
+  }
+}
